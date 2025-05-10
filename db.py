@@ -1,7 +1,7 @@
 import sqlite3
 
 class PriceModifierDB:
-    def __init__(self, db_name'price_modifiers.db'):
+    def __init__(self, db_name='price_modifiers.db'):
         self.conn = sqlite3.connect(db_name)
         self.cursor = self.conn.cursor()
         self.create_table()
@@ -26,8 +26,8 @@ class PriceModifierDB:
         self.conn.commit()
 
 # Get a price modifier
-    def get_modifiers(self, instrument_name):
-        self.cursor.execute('SELECT MODIFIER FROM INSTRUMENT_PRICE_MODIFIER WHERE NAME = ?', (instrument_name,))
+    def get_modifiers(self, name):
+        self.cursor.execute('SELECT VALUE FROM INSTRUMENT_PRICE_MODIFIER WHERE NAME = ?', (name,))
         row = self.cursor.fetchone()
         return row[0] if row else 1.0 # Default modifier is 1.0
     

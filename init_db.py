@@ -14,7 +14,7 @@ cursor.execute('''
 
 # Add a new price modifier
 cursor.executemany('''
-    INSERT INTO INSTRUMENT_PRICE_MODIFIER (name, modifier)
+    INSERT INTO INSTRUMENT_PRICE_MODIFIER (name, value)
     VALUES (?, ?)
 ''', [
     ('INSTRUMENT1', 1.1),

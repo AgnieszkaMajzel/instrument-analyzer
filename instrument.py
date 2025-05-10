@@ -45,5 +45,11 @@ class InstrumentData:
         elif self.name == "INSTRUMENT3":
             return self.min_value if self.min_value is not None else 0 #min for INSTRUMENT3
         else:
-            return 0 #other cases will be added later
+            sorted_values = sorted(self.data, key=lambda x: x[1], reverse=True)
+            last_10 = sorted_values[:10]
+            return sum(value for date, value in last_10) #sum of the newest 10 values (in terms of date)
+
+
+
+
 

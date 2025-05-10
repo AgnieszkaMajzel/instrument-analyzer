@@ -48,6 +48,7 @@ class InstrumentData:
             sorted_values = sorted(self.data, key=lambda x: x[1], reverse=True)
             last_10 = sorted_values[:10]
             return sum(value for date, value in last_10) #sum of the newest 10 values (in terms of date)
+        #although average of the newest 10 values would be more appropriate
 
 
 

@@ -11,6 +11,9 @@ class InstrumentData:
 # only for Instrument2 - data from November 2014
         self.nov2014_sum = 0.0
         self.nov2014_count = 0
+
+# only for Instrument3 - min value
+        self.min_value = None
         
     def add_record(self, date_str, value_str):
         date = datetime.strptime(date_str, '%d-%b-%Y')
@@ -28,12 +31,19 @@ class InstrumentData:
         if self.name == "INSTRUMENT2" and date.month == 11 and date.year == 2014:
             self.nov2014_sum += value
             self.nov2014_count += 1
-          
+
+# only for Instrument3 - min value
+        if self.name == "INSTRUMENT3":
+            if self.min_value is None or value < self.min_value:
+                self.min_value = value
+                
     def get_results(self):
         if self.name == "INSTRUMENT1":
             return self.sum / self.count if self.count > 0 else 0 #mean for INSTRUMENT1
         elif self.name == "INSTRUMENT2":
             return self.nov2014_sum / self.nov2014_count if self.nov2014_count > 0 else 0 #mean for INSTRUMENT2
+        elif self.name == "INSTRUMENT3":
+            return self.min_value if self.min_value is not None else 0 #min for INSTRUMENT3
         else:
             return 0 #other cases will be added later
 

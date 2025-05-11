@@ -14,7 +14,7 @@ class InstrumentData:
 
 # only for Instrument3 - min value
         self.min_value = None
-        
+         
     def add_record(self, date_str, value_str):
         date = datetime.strptime(date_str, '%d-%b-%Y')
         value = float(value_str)
@@ -45,12 +45,12 @@ class InstrumentData:
         elif self.name == "INSTRUMENT3":
             return self.min_value if self.min_value is not None else 0 #min for INSTRUMENT3
         else:
-            sorted_values = sorted(self.data, key=lambda x: x[1], reverse=True)
-            last_10 = sorted_values[:10]
-            return sum(value for date, value in last_10) #sum of the newest 10 values (in terms of date)
-        #although average of the newest 10 values would be more appropriate
-
-
+            if not self.data:
+                return 0.0
+            sorted_entries = sorted(self.data, key=lambda x: x[0], reverse=True)
+            last_10 = sorted_entries[:10]
+            return sum(v for d, v in last_10)  #sum of the newest 10 values (in terms of date)
+      
 
 
 

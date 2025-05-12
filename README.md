@@ -21,6 +21,7 @@ The Instrument Analyzer is a Python-based program designed to process and analyz
 - `data.txt`: Input CSV file containing instrument data.
 - `price_modifiers.db`: SQLite database file for storing price modifiers.
 - `run.bat`: Batch script to run the program on Windows.
+- `run.sh`: Batch script to run the program on Linux.
 
 ## How to Run
 1. Ensure Python 3.11 or later is installed on your system.
@@ -40,9 +41,13 @@ INSTRUMENT5,18-Apr-2003,3.91
 
 ## Example Output
 ```
-INSTRUMENT1: 2.5
-INSTRUMENT5: 3.32
+INSTRUMENT1: 2.467
+INSTRUMENT5: 3.91
 ```
+
+### Explanation:
+- **INSTRUMENT1**: The mean of `2.4655` and `2.4685` is `2.467`.
+- **INSTRUMENT5**: The value remains `3.91` as no price modifier is applied (price modifier equals 1.0)
 
 ## Dependencies
 - Python 3.11 or later
